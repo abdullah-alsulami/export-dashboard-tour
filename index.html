@@ -505,6 +505,12 @@
     .box-list { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
+    .facts-line { display: grid; grid-template-columns: 1fr; row-gap: 10px; }
+    .facts-line .sq { display: none; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .spec { border-left: 0; border-top: 1px solid var(--border-subtle); padding: 24px 22px; }
+    .spec:first-child { border-top: 0; }
+    .spec .cap { max-width: none; }
     .stage-grid { grid-template-columns: repeat(2, 1fr); }
     .kb { grid-template-columns: 1fr 1fr; }
     .kb-col:last-child { display: none; }
