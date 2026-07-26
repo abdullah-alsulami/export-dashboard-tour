@@ -193,7 +193,7 @@
   .spec .cap { color: var(--text-secondary); font-size: 13.5px; margin-top: 10px; line-height: 1.5; max-width: 24ch; }
 
   /* ════════ WORKFLOW EXPLORER ════════ */
-  .toggles { display: flex; flex-wrap: wrap; gap: 22px; margin: 36px 0 8px; }
+  .toggles { display: flex; flex-wrap: wrap; gap: 22px; margin: 36px 0 26px; }
   .toggle-group { display: flex; align-items: center; gap: 12px; }
   .toggle-group .tlabel {
     font-family: var(--font-mono); font-weight: 500; font-size: 11px;
@@ -208,8 +208,6 @@
   }
   .seg button:hover { color: var(--text-strong); }
   .seg button[aria-pressed="true"] { background: var(--action); color: var(--action-contrast); }
-  .route-note { font-size: 14px; color: var(--text-secondary); margin: 16px 0 28px; min-height: 22px; }
-  .route-note b { color: var(--accent-active); font-weight: 650; }
 
   .stage-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .stage-card {
@@ -607,7 +605,6 @@
         </div>
       </div>
     </div>
-    <p class="route-note" id="routeNote" aria-live="polite"></p>
 
     <div class="stage-grid" id="stageGrid" data-stagger></div>
 
@@ -928,7 +925,6 @@
   // ── Workflow explorer ──
   let isLC = true, isEXW = false, selected = 1;
   const grid = document.getElementById("stageGrid");
-  const note = document.getElementById("routeNote");
 
   const skippedSet = () => {
     const s = new Set();
@@ -953,9 +949,6 @@
       grid.appendChild(b);
     });
     grid.classList.add("in"); // re-renders stay visible; only the first entrance staggers
-    note.innerHTML = isEXW
-      ? "Route adapts — <b>8 → 12</b>: EXW orders skip vessel nomination, shipping documents and telex release"
-      : "";
   }
   function renderDetail() {
     const st = STAGES.find(s => s.n === selected);
